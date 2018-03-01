@@ -1,0 +1,29 @@
+{
+  "name": "picache",
+  "version": "1.0.0",
+  "description": "",
+  "types": "lib/Picache.d.ts",
+  "main": "lib/Picache.js",
+  "scripts": {
+    "build": "rm ./lib/* && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/expo": "^25.0.0",
+    "@types/react": "^16.0.39",
+    "@types/react-native": "^0.52.15",
+    "shorthash": "^0.0.2"
+  },
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.7.2"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}
