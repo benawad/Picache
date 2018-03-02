@@ -1,7 +1,7 @@
 {
   "name": "picache",
   "version": "1.0.5",
-  "description": "A React Native component to cache images.",
+  "description": "A React Native component to automatically cache images.",
   "types": "lib/Picache.d.ts",
   "main": "lib/Picache",
   "scripts": {
@@ -17,9 +17,7 @@
   "homepage": "https://github.com/benawad/Picache",
   "author": "Ben Awad",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
     "@types/expo": "^25.0.0",
     "@types/react": "^16.0.39",
