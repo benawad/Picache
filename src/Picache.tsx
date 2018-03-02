@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   Image,
   ImageURISource,
@@ -9,7 +9,7 @@ import {
   StyleProp,
   ImageStyle
 } from "react-native";
-import shorthash from "shorthash";
+import * as shorthash from "shorthash";
 import { FileSystem } from "expo";
 
 export interface Props
