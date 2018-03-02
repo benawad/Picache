@@ -35,6 +35,6 @@
   "peerDependencies": {
     "expo": "^25.0.0",
     "react": "^16.2.0",
-    "react-native": "^0.54.0"
+    "react-native": "0.52"
   }
 }
