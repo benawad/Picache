@@ -20,4 +20,4 @@ const App = () => (
 );
 ```
 
-We use `uri` instead of `source`, but other than that you can pass any prop that [Image](https://facebook.github.io/react-native/docs/image.html) would accept.
+I use `uri` instead of `source`, but other than that you can pass any prop that [Image](https://facebook.github.io/react-native/docs/image.html) would accept.
