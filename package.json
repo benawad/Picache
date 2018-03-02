@@ -1,18 +1,30 @@
 {
   "name": "picache",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React Native component to cache images.",
   "types": "lib/Picache.d.ts",
-  "main": "lib/Picache.js",
+  "main": "lib/Picache",
   "scripts": {
     "build": "rm ./lib/* && tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benawad/Picache"
+  },
+  "bugs": {
+    "url": "https://github.com/benawad/Picache/issues"
+  },
+  "homepage": "https://github.com/benawad/Picache",
+  "author": "Ben Awad",
+  "license": "MIT",
+  "files": ["lib"],
   "dependencies": {
     "@types/expo": "^25.0.0",
     "@types/react": "^16.0.39",
     "@types/react-native": "^0.52.15",
+    "expo": "^25.0.0",
+    "react": "^16.2.0",
+    "react-native": "^0.54.0",
     "shorthash": "^0.0.2"
   },
   "devDependencies": {
@@ -20,10 +32,5 @@
     "tslint-config-prettier": "^1.9.0",
     "tslint-react": "^3.5.1",
     "typescript": "^2.7.2"
-  },
-  "peerDependencies": {
-    "expo": "*",
-    "react": "*",
-    "react-native": "*"
   }
 }
