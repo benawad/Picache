@@ -17,9 +17,7 @@
   "homepage": "https://github.com/benawad/Picache",
   "author": "Ben Awad",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
     "@types/expo": "^25.0.0",
     "@types/react": "^16.0.39",
@@ -33,8 +31,8 @@
     "typescript": "^2.7.2"
   },
   "peerDependencies": {
-    "expo": "^25.0.0",
-    "react": "^16.2.0",
-    "react-native": "0.52"
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
   }
 }
