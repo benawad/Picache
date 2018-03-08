@@ -1,48 +1,104 @@
 import * as React from "react";
-import { Image } from "react-native";
+import {
+  Image,
+  ImageProperties,
+  ImageURISource,
+  ImageRequireSource
+} from "react-native";
 import * as shorthash from "shorthash";
-import { FileSystem } from "expo";
-import { Props, State } from "./types";
+import { FileSystem, Asset } from "expo";
+import { State, Source } from "./types";
 
-export default class Picache extends React.Component<Props, State> {
+export default class Picache extends React.Component<ImageProperties, State> {
   state = {
     source: {}
   };
 
-  async downloadImage(uri: string) {
+  async downloadRemoteImage(uri: string) {
     const name = shorthash.unique(uri);
     const path = `${FileSystem.cacheDirectory}${name}.png`;
     const image = await FileSystem.getInfoAsync(path);
     if (image.exists) {
-      this.setState({
-        source: {
-          uri: image.uri
-        }
-      });
-      return;
+      return image.uri;
     }
 
     const newImage = await FileSystem.downloadAsync(uri, path);
+    return newImage.uri;
+  }
+
+  async downloadLocalImage(source: ImageRequireSource) {
+    const asset = await Asset.fromModule(source);
+    if (!asset.localUri) {
+      await asset.downloadAsync();
+      console.log(asset.localUri);
+    }
     this.setState({
       source: {
-        uri: newImage.uri
+        uri: asset.localUri
       }
     });
   }
 
-  async componentWillReceiveProps(nextProps: Props, props: Props) {
-    if (nextProps.uri === props.uri) {
+  async returnNull() {
+    return null;
+  }
+
+  async downloadImage(source: Source) {
+    if (typeof source === "number") {
+      // local image require('./image.png')
+      this.downloadLocalImage(source);
+    } else if (Array.isArray(source)) {
+      const newUris = await Promise.all(
+        source.map(s => {
+          if (s.uri) {
+            return this.downloadRemoteImage(s.uri);
+          } else {
+            return this.returnNull();
+          }
+        })
+      );
+      const newSources = [];
+      for (let i = 0; i < source.length; i += 1) {
+        const uri = newUris[i];
+        if (uri) {
+          newSources.push({
+            ...source[i],
+            uri
+          });
+        }
+      }
+      this.setState({
+        source: newSources
+      });
+    } else {
+      if (source.uri) {
+        const newUri = await this.downloadRemoteImage(source.uri);
+        this.setState({
+          source: {
+            ...source,
+            uri: newUri
+          }
+        });
+      }
+    }
+  }
+
+  async componentWillReceiveProps(
+    nextProps: ImageProperties,
+    props: ImageProperties
+  ) {
+    if (nextProps.source === props.source) {
       return;
     }
-    this.downloadImage(nextProps.uri);
+    this.downloadImage(nextProps.source);
   }
 
   async componentDidMount() {
-    this.downloadImage(this.props.uri);
+    this.downloadImage(this.props.source);
   }
 
   render() {
-    const { uri, ...otherProps } = this.props;
+    const { source, ...otherProps } = this.props;
     return <Image source={this.state.source} {...otherProps} />;
   }
 }
