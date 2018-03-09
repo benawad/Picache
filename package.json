@@ -5,7 +5,8 @@
   "types": "lib/Picache.d.ts",
   "main": "lib/Picache",
   "scripts": {
-    "build": "rm ./lib/* && tsc"
+    "build": "rm ./lib/* && tsc",
+    "publish": "rm ./lib/* && tsc && npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,7 @@
   "homepage": "https://github.com/benawad/Picache",
   "author": "Ben Awad",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
     "shorthash": "^0.0.2"
   },

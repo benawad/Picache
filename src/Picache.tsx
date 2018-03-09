@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  Image,
-  ImageProperties,
-  ImageURISource,
-  ImageRequireSource
-} from "react-native";
+import { Image, ImageProperties, ImageRequireSource } from "react-native";
 import * as shorthash from "shorthash";
 import { FileSystem, Asset } from "expo";
 import { State, Source } from "./types";
