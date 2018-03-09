@@ -25,7 +25,6 @@ export default class Picache extends React.Component<ImageProperties, State> {
     const asset = await Asset.fromModule(source);
     if (!asset.localUri) {
       await asset.downloadAsync();
-      console.log(asset.localUri);
     }
     this.setState({
       source: {
