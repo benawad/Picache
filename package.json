@@ -1,6 +1,6 @@
 {
   "name": "picache",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A React Native component to automatically cache images.",
   "types": "lib/Picache.d.ts",
   "main": "lib/Picache",
