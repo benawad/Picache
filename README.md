@@ -8,7 +8,7 @@ A React Native component that will automatically cache images.
 yarn add picache
 ```
 
-Use Picache the same way you would add an `<Image />` component.
+Use Picache the same way you would use an `<Image />` component.
 
 ```js
 import Picache from "picache";
